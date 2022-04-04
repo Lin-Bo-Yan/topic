@@ -7,19 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4B14EA3A27FABAC900F5FF37 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B14EA3927FABAC900F5FF37 /* GoogleService-Info.plist */; };
+		4B32F80327F921EB00E35AE5 /* IndexCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B32F80227F921EB00E35AE5 /* IndexCVC.swift */; };
+		4B32F80527F921FF00E35AE5 /* IndexCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B32F80427F921FF00E35AE5 /* IndexCell.swift */; };
+		4B4948FE27FB05A2003B0DA6 /* steamerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4948FD27FB05A2003B0DA6 /* steamerModel.swift */; };
+		4B49490027FB0637003B0DA6 /* signInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4948FF27FB0637003B0DA6 /* signInVC.swift */; };
+		4B49490527FB0E3C003B0DA6 /* showToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B49490427FB0E3C003B0DA6 /* showToast.swift */; };
+		4B49492927FB1804003B0DA6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B49492827FB1804003B0DA6 /* GoogleService-Info.plist */; };
+		4B5408BC27F49FA2002C125F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5408BB27F49FA2002C125F /* AppDelegate.swift */; };
+		4B5408BE27F49FA2002C125F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5408BD27F49FA2002C125F /* SceneDelegate.swift */; };
+		4B5408C027F49FA2002C125F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5408BF27F49FA2002C125F /* ViewController.swift */; };
 		4B5408C327F49FA2002C125F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B5408C127F49FA2002C125F /* Main.storyboard */; };
 		4B5408C527F49FA4002C125F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B5408C427F49FA4002C125F /* Assets.xcassets */; };
 		4B5408C827F49FA4002C125F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B5408C627F49FA4002C125F /* LaunchScreen.storyboard */; };
+		C05AD2E127F986D300374793 /* signUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05AD2E027F986D300374793 /* signUpVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4B14EA3927FABAC900F5FF37 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4B32F80227F921EB00E35AE5 /* IndexCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexCVC.swift; sourceTree = "<group>"; };
 		4B32F80427F921FF00E35AE5 /* IndexCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexCell.swift; sourceTree = "<group>"; };
 		4B4948FD27FB05A2003B0DA6 /* steamerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = steamerModel.swift; sourceTree = "<group>"; };
 		4B4948FF27FB0637003B0DA6 /* signInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signInVC.swift; sourceTree = "<group>"; };
 		4B49490427FB0E3C003B0DA6 /* showToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showToast.swift; sourceTree = "<group>"; };
+		4B49492827FB1804003B0DA6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4B5408B827F49FA2002C125F /* topic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = topic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B5408BB27F49FA2002C125F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4B5408BD27F49FA2002C125F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -32,7 +41,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		4B66FDD827FB2C4C002DB515 /* Frameworks */ = {
+		4B5408B527F49FA2002C125F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -53,10 +62,9 @@
 		4B5408AF27F49FA2002C125F = {
 			isa = PBXGroup;
 			children = (
-				4B14EA3927FABAC900F5FF37 /* GoogleService-Info.plist */,
+				4B49492827FB1804003B0DA6 /* GoogleService-Info.plist */,
 				4B5408BA27F49FA2002C125F /* topic */,
 				4B5408B927F49FA2002C125F /* Products */,
-				4B66FDD927FB2C93002DB515 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,15 +91,7 @@
 				4B5408C927F49FA4002C125F /* Info.plist */,
 				4B49490427FB0E3C003B0DA6 /* showToast.swift */,
 			);
-			name = topic;
-			path = topic/topic;
-			sourceTree = "<group>";
-		};
-		4B66FDD927FB2C93002DB515 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
+			path = topic;
 			sourceTree = "<group>";
 		};
 		4B786CFB27F7EC64008CED2F /* Controllor */ = {
@@ -119,8 +119,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4B5408CC27F49FA4002C125F /* Build configuration list for PBXNativeTarget "topic" */;
 			buildPhases = (
+				4B5408B427F49FA2002C125F /* Sources */,
+				4B5408B527F49FA2002C125F /* Frameworks */,
 				4B5408B627F49FA2002C125F /* Resources */,
-				4B66FDD827FB2C4C002DB515 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -174,13 +175,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B5408C827F49FA4002C125F /* LaunchScreen.storyboard in Resources */,
-				4B14EA3A27FABAC900F5FF37 /* GoogleService-Info.plist in Resources */,
+				4B49492927FB1804003B0DA6 /* GoogleService-Info.plist in Resources */,
 				4B5408C527F49FA4002C125F /* Assets.xcassets in Resources */,
 				4B5408C327F49FA2002C125F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4B5408B427F49FA2002C125F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C05AD2E127F986D300374793 /* signUpVC.swift in Sources */,
+				4B5408C027F49FA2002C125F /* ViewController.swift in Sources */,
+				4B49490027FB0637003B0DA6 /* signInVC.swift in Sources */,
+				4B4948FE27FB05A2003B0DA6 /* steamerModel.swift in Sources */,
+				4B32F80527F921FF00E35AE5 /* IndexCell.swift in Sources */,
+				4B32F80327F921EB00E35AE5 /* IndexCVC.swift in Sources */,
+				4B49490527FB0E3C003B0DA6 /* showToast.swift in Sources */,
+				4B5408BC27F49FA2002C125F /* AppDelegate.swift in Sources */,
+				4B5408BE27F49FA2002C125F /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
 		4B5408C127F49FA2002C125F /* Main.storyboard */ = {
@@ -252,7 +272,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -307,8 +326,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "";
-				"INFOPLIST_FILE[sdk=*]" = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -322,13 +339,13 @@
 		4B5408CD27F49FA4002C125F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = UQ5UQC7B69;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "";
-				"INFOPLIST_FILE[sdk=*]" = "";
+				INFOPLIST_FILE = topic/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -350,12 +367,13 @@
 		4B5408CE27F49FA4002C125F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = UQ5UQC7B69;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "";
+				INFOPLIST_FILE = topic/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
