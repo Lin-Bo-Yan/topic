@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="h6A-dG-A96">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -229,7 +230,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="buZ-7b-qce">
-                                <rect key="frame" x="263" y="219.5" width="50" height="50"/>
+                                <rect key="frame" x="263" y="302.5" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="AFv-Pd-EEN"/>
                                     <constraint firstAttribute="height" constant="50" id="b7c-hF-bAr"/>
@@ -240,14 +241,14 @@
                                 </buttonConfiguration>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="picPersonal" translatesAutoresizingMaskIntoConstraints="NO" id="tnC-1F-qlx">
-                                <rect key="frame" x="151" y="95" width="140" height="140"/>
+                                <rect key="frame" x="151" y="187" width="140" height="140"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="140" id="NW9-Sk-SNU"/>
                                     <constraint firstAttribute="width" constant="140" id="TlR-Ns-bb0"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="41" translatesAutoresizingMaskIntoConstraints="NO" id="39F-L5-6li">
-                                <rect key="frame" x="25" y="332" width="364" height="232"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="39F-L5-6li">
+                                <rect key="frame" x="25" y="424" width="364" height="227"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="暱稱" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0YO-ZC-GTo">
                                         <rect key="frame" x="0.0" y="0.0" width="364" height="50"/>
@@ -267,7 +268,7 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="帳號" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pG5-A9-QvE">
-                                        <rect key="frame" x="0.0" y="91" width="364" height="50"/>
+                                        <rect key="frame" x="0.0" y="59" width="364" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="GSo-OG-jUB"/>
                                             <constraint firstAttribute="width" constant="364" id="uT1-hg-q3x"/>
@@ -280,8 +281,22 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密碼" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VpZ-P1-JGf">
+                                        <rect key="frame" x="0.0" y="118" width="364" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="4Jk-qb-P2e"/>
+                                            <constraint firstAttribute="width" constant="364" id="bAT-0z-shs"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pa1-hn-6va">
-                                        <rect key="frame" x="0.0" y="182" width="364" height="50"/>
+                                        <rect key="frame" x="0.0" y="177" width="364" height="50"/>
                                         <color key="backgroundColor" systemColor="labelColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="364" id="RA4-6V-dVP"/>
@@ -302,7 +317,7 @@
                         <viewLayoutGuide key="safeArea" id="nRa-QZ-Bv0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="39F-L5-6li" firstAttribute="centerY" secondItem="OeO-0Y-4ae" secondAttribute="centerY" id="9Xw-lf-JLl"/>
+                            <constraint firstItem="39F-L5-6li" firstAttribute="centerY" secondItem="OeO-0Y-4ae" secondAttribute="centerY" multiplier="1.2" id="9Xw-lf-JLl"/>
                             <constraint firstItem="39F-L5-6li" firstAttribute="centerX" secondItem="OeO-0Y-4ae" secondAttribute="centerX" id="Maf-mx-S8u"/>
                             <constraint firstItem="tnC-1F-qlx" firstAttribute="leading" secondItem="39F-L5-6li" secondAttribute="trailing" constant="-238" id="WKk-pZ-XAm"/>
                             <constraint firstItem="39F-L5-6li" firstAttribute="top" secondItem="tnC-1F-qlx" secondAttribute="bottom" constant="97" id="YUz-am-6pF"/>

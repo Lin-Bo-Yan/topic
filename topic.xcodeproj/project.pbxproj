@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B14EA3A27FABAC900F5FF37 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B14EA3927FABAC900F5FF37 /* GoogleService-Info.plist */; };
 		4B32F80327F921EB00E35AE5 /* IndexCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B32F80227F921EB00E35AE5 /* IndexCVC.swift */; };
 		4B32F80527F921FF00E35AE5 /* IndexCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B32F80427F921FF00E35AE5 /* IndexCell.swift */; };
 		4B5408BC27F49FA2002C125F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5408BB27F49FA2002C125F /* AppDelegate.swift */; };
@@ -39,10 +40,10 @@
 		C05AD2DD27F9850E00374793 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = C05AD2DC27F9850E00374793 /* FirebaseStorageCombine-Community */; };
 		C05AD2DF27F9850E00374793 /* FirebaseStorageSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = C05AD2DE27F9850E00374793 /* FirebaseStorageSwift-Beta */; };
 		C05AD2E127F986D300374793 /* signUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05AD2E027F986D300374793 /* signUpVC.swift */; };
-		C05AD2E327F99B4E00374793 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C05AD2E227F99B4E00374793 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4B14EA3927FABAC900F5FF37 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4B32F80227F921EB00E35AE5 /* IndexCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexCVC.swift; sourceTree = "<group>"; };
 		4B32F80427F921FF00E35AE5 /* IndexCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexCell.swift; sourceTree = "<group>"; };
 		4B5408B827F49FA2002C125F /* topic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = topic.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,7 +55,6 @@
 		4B5408C727F49FA4002C125F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4B5408C927F49FA4002C125F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C05AD2E027F986D300374793 /* signUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signUpVC.swift; sourceTree = "<group>"; };
-		C05AD2E227F99B4E00374793 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +94,7 @@
 		4B5408AF27F49FA2002C125F = {
 			isa = PBXGroup;
 			children = (
+				4B14EA3927FABAC900F5FF37 /* GoogleService-Info.plist */,
 				4B5408BA27F49FA2002C125F /* topic */,
 				4B5408B927F49FA2002C125F /* Products */,
 			);
@@ -120,7 +121,6 @@
 				4B5408C427F49FA4002C125F /* Assets.xcassets */,
 				4B5408C627F49FA4002C125F /* LaunchScreen.storyboard */,
 				4B5408C927F49FA4002C125F /* Info.plist */,
-				C05AD2E227F99B4E00374793 /* GoogleService-Info.plist */,
 			);
 			path = topic;
 			sourceTree = "<group>";
@@ -236,7 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B5408C827F49FA4002C125F /* LaunchScreen.storyboard in Resources */,
-				C05AD2E327F99B4E00374793 /* GoogleService-Info.plist in Resources */,
+				4B14EA3A27FABAC900F5FF37 /* GoogleService-Info.plist in Resources */,
 				4B5408C527F49FA4002C125F /* Assets.xcassets in Resources */,
 				4B5408C327F49FA2002C125F /* Main.storyboard in Resources */,
 			);
@@ -330,7 +330,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -384,7 +384,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -401,7 +401,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = UQ5UQC7B69;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = topic/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -414,7 +414,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = www.wells.topic;
+				PRODUCT_BUNDLE_IDENTIFIER = www.wells.topic.rob;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -429,7 +429,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = UQ5UQC7B69;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = topic/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -442,7 +442,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = www.wells.topic;
+				PRODUCT_BUNDLE_IDENTIFIER = www.wells.topic.rob;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
