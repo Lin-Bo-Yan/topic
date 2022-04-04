@@ -10,6 +10,10 @@
 		4B14EA3A27FABAC900F5FF37 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B14EA3927FABAC900F5FF37 /* GoogleService-Info.plist */; };
 		4B32F80327F921EB00E35AE5 /* IndexCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B32F80227F921EB00E35AE5 /* IndexCVC.swift */; };
 		4B32F80527F921FF00E35AE5 /* IndexCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B32F80427F921FF00E35AE5 /* IndexCell.swift */; };
+		4B4948FE27FB05A2003B0DA6 /* steamerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4948FD27FB05A2003B0DA6 /* steamerModel.swift */; };
+		4B49490027FB0637003B0DA6 /* signInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4948FF27FB0637003B0DA6 /* signInVC.swift */; };
+		4B49490327FB0C51003B0DA6 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 4B49490227FB0C51003B0DA6 /* Toast */; };
+		4B49490527FB0E3C003B0DA6 /* showToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B49490427FB0E3C003B0DA6 /* showToast.swift */; };
 		4B5408BC27F49FA2002C125F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5408BB27F49FA2002C125F /* AppDelegate.swift */; };
 		4B5408BE27F49FA2002C125F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5408BD27F49FA2002C125F /* SceneDelegate.swift */; };
 		4B5408C027F49FA2002C125F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5408BF27F49FA2002C125F /* ViewController.swift */; };
@@ -46,6 +50,9 @@
 		4B14EA3927FABAC900F5FF37 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4B32F80227F921EB00E35AE5 /* IndexCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexCVC.swift; sourceTree = "<group>"; };
 		4B32F80427F921FF00E35AE5 /* IndexCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexCell.swift; sourceTree = "<group>"; };
+		4B4948FD27FB05A2003B0DA6 /* steamerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = steamerModel.swift; sourceTree = "<group>"; };
+		4B4948FF27FB0637003B0DA6 /* signInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signInVC.swift; sourceTree = "<group>"; };
+		4B49490427FB0E3C003B0DA6 /* showToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showToast.swift; sourceTree = "<group>"; };
 		4B5408B827F49FA2002C125F /* topic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = topic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B5408BB27F49FA2002C125F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4B5408BD27F49FA2002C125F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B49490327FB0C51003B0DA6 /* Toast in Frameworks */,
 				C05AD2DD27F9850E00374793 /* FirebaseStorageCombine-Community in Frameworks */,
 				C05AD2CB27F9850E00374793 /* FirebaseInAppMessaging-Beta in Frameworks */,
 				C05AD2BB27F9850E00374793 /* FirebaseDatabaseSwift-Beta in Frameworks */,
@@ -91,6 +99,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B4948FC27FB058C003B0DA6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4B4948FD27FB05A2003B0DA6 /* steamerModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		4B5408AF27F49FA2002C125F = {
 			isa = PBXGroup;
 			children = (
@@ -111,9 +127,9 @@
 		4B5408BA27F49FA2002C125F /* topic */ = {
 			isa = PBXGroup;
 			children = (
+				4B4948FC27FB058C003B0DA6 /* Model */,
 				4B786CFB27F7EC64008CED2F /* Controllor */,
 				4B786CFD27F7ECA2008CED2F /* Cell */,
-				4B786CFC27F7EC81008CED2F /* Model */,
 				4B5408BB27F49FA2002C125F /* AppDelegate.swift */,
 				4B5408BD27F49FA2002C125F /* SceneDelegate.swift */,
 				4B5408BF27F49FA2002C125F /* ViewController.swift */,
@@ -121,6 +137,7 @@
 				4B5408C427F49FA4002C125F /* Assets.xcassets */,
 				4B5408C627F49FA4002C125F /* LaunchScreen.storyboard */,
 				4B5408C927F49FA4002C125F /* Info.plist */,
+				4B49490427FB0E3C003B0DA6 /* showToast.swift */,
 			);
 			path = topic;
 			sourceTree = "<group>";
@@ -130,15 +147,9 @@
 			children = (
 				4B32F80227F921EB00E35AE5 /* IndexCVC.swift */,
 				C05AD2E027F986D300374793 /* signUpVC.swift */,
+				4B4948FF27FB0637003B0DA6 /* signInVC.swift */,
 			);
 			path = Controllor;
-			sourceTree = "<group>";
-		};
-		4B786CFC27F7EC81008CED2F /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		4B786CFD27F7ECA2008CED2F /* Cell */ = {
@@ -189,6 +200,7 @@
 				C05AD2DA27F9850E00374793 /* FirebaseStorage */,
 				C05AD2DC27F9850E00374793 /* FirebaseStorageCombine-Community */,
 				C05AD2DE27F9850E00374793 /* FirebaseStorageSwift-Beta */,
+				4B49490227FB0C51003B0DA6 /* Toast */,
 			);
 			productName = topic;
 			productReference = 4B5408B827F49FA2002C125F /* topic.app */;
@@ -220,6 +232,7 @@
 			mainGroup = 4B5408AF27F49FA2002C125F;
 			packageReferences = (
 				C05AD2B127F9850E00374793 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				4B49490127FB0C50003B0DA6 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = 4B5408B927F49FA2002C125F /* Products */;
 			projectDirPath = "";
@@ -251,8 +264,11 @@
 			files = (
 				C05AD2E127F986D300374793 /* signUpVC.swift in Sources */,
 				4B5408C027F49FA2002C125F /* ViewController.swift in Sources */,
+				4B49490027FB0637003B0DA6 /* signInVC.swift in Sources */,
+				4B4948FE27FB05A2003B0DA6 /* steamerModel.swift in Sources */,
 				4B32F80527F921FF00E35AE5 /* IndexCell.swift in Sources */,
 				4B32F80327F921EB00E35AE5 /* IndexCVC.swift in Sources */,
+				4B49490527FB0E3C003B0DA6 /* showToast.swift in Sources */,
 				4B5408BC27F49FA2002C125F /* AppDelegate.swift in Sources */,
 				4B5408BE27F49FA2002C125F /* SceneDelegate.swift in Sources */,
 			);
@@ -474,6 +490,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4B49490127FB0C50003B0DA6 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift?fbclid=IwAR1AprS26EXkqoR-xEp77y1jZk3HGsthLK2imK06q_bM5IuCZH1YmdHKwgw";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		C05AD2B127F9850E00374793 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -485,6 +509,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4B49490227FB0C51003B0DA6 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4B49490127FB0C50003B0DA6 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
+		};
 		C05AD2B227F9850E00374793 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C05AD2B127F9850E00374793 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

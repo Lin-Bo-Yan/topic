@@ -1,16 +1,16 @@
 //
-//  signUpVC.swift
+//  signInVC.swift
 //  topic
 //
-//  Created by 林宇智 on 2022/4/3.
+//  Created by Class on 2022/4/4.
 //
 
 import UIKit
 import Firebase
 import FirebaseAuth
-class signUpVC: UIViewController ,UITextFieldDelegate{
+class signInVC: UIViewController,UITextFieldDelegate{
 
-    @IBOutlet weak var nickName: UITextField!
+    
     @IBOutlet weak var EmailText: UITextField!
     @IBOutlet weak var passWordText: UITextField!
     
@@ -20,10 +20,10 @@ class signUpVC: UIViewController ,UITextFieldDelegate{
        
     }
     
-    @IBAction func ButtonOnClick(_ sender: Any) {
+    @IBAction func signInOnClick(_ sender: Any) {
         print(EmailText.text)
         print(passWordText.text)
-        Auth.auth().createUser(withEmail: EmailText.text!, password: passWordText.text!){
+        Auth.auth().signIn(withEmail: EmailText.text!, password: passWordText.text!){
             result,error in
             guard let user = result?.user,
                   error==nil else{
@@ -31,7 +31,13 @@ class signUpVC: UIViewController ,UITextFieldDelegate{
                       return
                   }
             print(user.email,user.uid)
-            // 返回訊息告訴使用者成功
+            
+            if let user = Auth.auth().currentUser {
+                print("\(user.uid) login")
+               
+            } else {
+                print("not login")
+            }
         }
         //  暱稱Db 另外存
     }
@@ -43,5 +49,6 @@ class signUpVC: UIViewController ,UITextFieldDelegate{
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+    
+    
 }
-

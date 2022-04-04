@@ -135,7 +135,7 @@
         <!--會員-->
         <scene sceneID="vdz-Qh-oD3">
             <objects>
-                <viewController id="bfP-el-JB4" sceneMemberID="viewController">
+                <viewController id="bfP-el-JB4" customClass="signInVC" customModule="topic" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Vl5-as-QuC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -157,6 +157,9 @@
                                                 <integer key="value" value="25"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="signInOnClick:" destination="bfP-el-JB4" eventType="touchUpInside" id="Zzj-eV-WHn"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ejl-oT-Cla">
                                         <rect key="frame" x="0.0" y="91" width="350" height="31"/>
@@ -174,7 +177,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="31" translatesAutoresizingMaskIntoConstraints="NO" id="e8f-aA-zot">
                                 <rect key="frame" x="32" y="382.5" width="350" height="131"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="帳號" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JJh-cR-aKu">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="信箱" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JJh-cR-aKu">
                                         <rect key="frame" x="0.0" y="0.0" width="350" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="RQm-O9-gDJ"/>
@@ -186,6 +189,9 @@
                                                 <integer key="value" value="50"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="bfP-el-JB4" id="lWa-Hm-jy0"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密碼" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eCV-2W-a92">
                                         <rect key="frame" x="0.0" y="81" width="350" height="50"/>
@@ -199,6 +205,9 @@
                                                 <integer key="value" value="50"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="bfP-el-JB4" id="Xek-a4-aIQ"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <constraints>
@@ -216,6 +225,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="會員" id="cEN-1f-4sK"/>
+                    <connections>
+                        <outlet property="EmailText" destination="JJh-cR-aKu" id="GfG-eT-o0C"/>
+                        <outlet property="passWordText" destination="eCV-2W-a92" id="31N-Vx-bCv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z5j-Py-2nT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -264,10 +277,10 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="buttonclick:" destination="Gss-qA-wyw" eventType="editingDidEnd" id="ATl-Nd-8VH"/>
+                                            <outlet property="delegate" destination="Gss-qA-wyw" id="Od5-TE-btt"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="帳號" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pG5-A9-QvE">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="信箱" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pG5-A9-QvE">
                                         <rect key="frame" x="0.0" y="59" width="364" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="GSo-OG-jUB"/>
@@ -280,6 +293,9 @@
                                                 <integer key="value" value="20"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="Gss-qA-wyw" id="n3H-Ho-BbL"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密碼" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VpZ-P1-JGf">
                                         <rect key="frame" x="0.0" y="118" width="364" height="50"/>
@@ -294,6 +310,9 @@
                                                 <integer key="value" value="20"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="Gss-qA-wyw" id="HMa-UA-lZN"/>
+                                        </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pa1-hn-6va">
                                         <rect key="frame" x="0.0" y="177" width="364" height="50"/>
@@ -310,6 +329,9 @@
                                                 <integer key="value" value="25"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="ButtonOnClick:" destination="Gss-qA-wyw" eventType="touchUpInside" id="YaA-Pv-Dx6"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -327,8 +349,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="XQz-Bw-8gp"/>
                     <connections>
-                        <outlet property="emailtext" destination="0YO-ZC-GTo" id="nrd-CO-Z8U"/>
-                        <outlet property="passwordtext" destination="pG5-A9-QvE" id="oTG-rc-rQd"/>
+                        <outlet property="EmailText" destination="pG5-A9-QvE" id="jrJ-Ba-Koj"/>
+                        <outlet property="nickName" destination="0YO-ZC-GTo" id="9TH-e3-jBa"/>
+                        <outlet property="passWordText" destination="VpZ-P1-JGf" id="bRe-c3-Jmt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bfK-Ud-Bzw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
