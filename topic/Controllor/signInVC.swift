@@ -33,14 +33,14 @@ class signInVC: UIViewController,UITextFieldDelegate{
             print(user.email,user.uid)
             
             if let user = Auth.auth().currentUser {
-                print("\(user.uid) login")
+                print("\(user.uid) 成功")
                 //登入成功頁面跳轉
-                self.presentViewController(IndexCVC(), animated: true, completion: nil)
+                    //self.performSegue(withIdentifier: "ToIndexScreen", sender: sender)
             } else {
-                print("not login")
+                print("登入失敗")
             }
         }
-        //  暱稱Db 另外存
+        //  暱稱Db 另外
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
