@@ -35,7 +35,7 @@ class signInVC: UIViewController,UITextFieldDelegate{
             if let user = Auth.auth().currentUser {
                 print("\(user.uid) login")
                 //登入成功頁面跳轉
-                self.presentViewController(IndexCVC(), animated: true, completion: nil)
+                //self.presentViewController(IndexCVC(), animated: true, completion: nil)
             } else {
                 print("not login")
             }
