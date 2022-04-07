@@ -21,8 +21,8 @@ class signUpVC: UIViewController ,UITextFieldDelegate{
     }
     
     @IBAction func ButtonOnClick(_ sender: Any) {
-        print(EmailText.text)
-        print(passWordText.text)
+       // print(EmailText.text)
+       // print(passWordText.text)
         Auth.auth().createUser(withEmail: EmailText.text!, password: passWordText.text!){
             result,error in
             guard let user = result?.user,
@@ -30,12 +30,17 @@ class signUpVC: UIViewController ,UITextFieldDelegate{
                       print(error?.localizedDescription)
                       return
                   }
-            print(user.email,user.uid)
             // 返回訊息告訴使用者成功
+            print(user.email,user.uid)
+            
+            let ref = Database.database().reference()
+                        let aDict = ["Nickname":self.nickName.text!,"Email":self.EmailText.text!,"Password":self.passWordText.text!,"isSignIn":"0","isSignUp":"1" ]
+
+                        ref.child("User").child(self.nickName.text!).setValue(aDict)
         }
-        //  暱稱Db 另外存
+       
     }
-    
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
        self.view.endEditing(true)
        return true
@@ -43,5 +48,11 @@ class signUpVC: UIViewController ,UITextFieldDelegate{
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+    
+    //let ref = Database.database().reference()
+    //let aDict = ["":self.NicknameText]
+    
+    
+    
 }
 
