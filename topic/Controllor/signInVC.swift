@@ -8,12 +8,14 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import FirebaseFirestore
 import SwiftUI
 class signInVC: UIViewController,UITextFieldDelegate{
 
     
     @IBOutlet weak var EmailText: UITextField!
     @IBOutlet weak var passWordText: UITextField!
+    var memberSignInVC: Member?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,24 +25,39 @@ class signInVC: UIViewController,UITextFieldDelegate{
                 print(error.localizedDescription)
             }
         }
-       
-        //隨時監聽DB內容
-        let ref = Database.database().reference(withPath: "name")
-        ref.observe(.value){(snapshot) in
-            if let output = snapshot.value{
-                
-            }
-        }
+        navigationItem.hidesBackButton = true //隱藏 back 按鍵
     }
     
     @IBAction func signInOnClick(_ sender: Any) {
-        let ref = Database.database().reference()
-        ref.removeAllObservers()
-        ref.observe(.value){(snapshot) in
-            print("這裏:\(snapshot)")
+        let eMailTextBtn = EmailText.text ?? ""
+        let passWordBtn = passWordText.text ?? ""
+        if  eMailTextBtn != "" || passWordBtn != "" { //判斷用戶是否沒輸入
+            
+            let reference = Firestore.firestore().collection("玩家")
+            reference.document(eMailTextBtn).getDocument{(snapshop, error) in
+                if let error = error
+                {
+                    print("閉包錯誤：\(error.localizedDescription)")
+                }
+                    if let snapshot = snapshop
+                    {
+                        let passWordData = snapshot.data()?["密碼"] // 這個值取出來是Any型別 需要轉型成String
+                        let eMailData = snapshot.data()?["信箱"]
+                        if(passWordBtn == passWordData as! String){
+                            self.memberSignInVC = Member(eMailData as! String)
+                            self.performSegue(withIdentifier: "ToIndexScreen", sender: self)
+                        }else{
+                            print("密碼錯誤")
+                        }
+                    }
+            }
+
+        }else{
+            print("可能沒有這組帳號密碼")
         }
-    }
-    
+        
+            }
+    //map(String.init(describing:)) ?? "nil" 取出所有的值
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
        self.view.endEditing(true)
        return true
@@ -48,11 +65,24 @@ class signInVC: UIViewController,UITextFieldDelegate{
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+    override func prepare (for segue: UIStoryboardSegue, sender: Any?){
+        if let memberProfileVC = segue.destination as? memberProfileVC{
+            memberProfileVC.member = memberSignInVC
+
+        }
+    }
     
+    
+//self.verify(passWordBtn,passWordData as! String)
+//    func verify(_ optional :String ,_ optionalTwo :String ){
+//        if(optional == optionalTwo){
+//            print("密碼正確")
+//        }else{
+//            print("密碼錯誤")
+//        }
+//    }
     
 }
-
-
 /*
  設定資料
  let ref = Database.database().reference()
@@ -156,3 +186,22 @@ if let user = Auth.auth().currentUser {
          self.performSegue(withIdentifier: "ToIndexScreen", sender: self)} }
 
  */
+
+
+/**
+ //隨時監聽DB內容
+ let ref = Database.database().reference(withPath: "name")
+ ref.observe(.value){(snapshot) in
+     if let output = snapshot.value{}
+ }
+ */
+
+/**
+ // signInOnClick
+ let ref = Database.database().reference()
+ ref.removeAllObservers()
+ ref.observe(.value){(snapshot) in
+     print("這裏:\(snapshot)")
+ }
+ */
+// let snapshotData = snapshot.data().map(String.init(describing:)) ?? "nil" 取全部的值
