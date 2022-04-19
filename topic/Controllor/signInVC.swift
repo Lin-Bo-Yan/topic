@@ -11,7 +11,6 @@ import FirebaseAuth
 import FirebaseFirestore
 import SwiftUI
 class signInVC: UIViewController{
-    static var signIn : Bool = false // 未登入狀態
     
     @IBOutlet weak var EmailText: UITextField!
     @IBOutlet weak var passWordText: UITextField!

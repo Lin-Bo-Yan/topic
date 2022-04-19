@@ -145,22 +145,32 @@ class liveRoomVC: UIViewController {
     }
     
     @IBAction func onEnterClick(_ sender: Any) {
-        var chatBoxBtn = chatBox.text ?? " "
-        chatBoxBtn.replacingOccurrences(of:" ", with: "")
-        print("按鈕\(chatBoxBtn)")
-        if chatBoxBtn != ""
-        {
+        var chatBoxBtn = chatBox.text ?? ""
+        if chatBoxBtn.trimmingCharacters(in: .whitespaces) == ""{
+            print("empty")
+        }else{
             chatArry.append(chatBoxBtn)
             userNameToChat.append(nameID)
             chatBox.text = nil
             self.chatTV.reloadData()
             print(userNameToChat)
-
         }
-        else
-        {
-           print("空白輸入匡")
-        }
+        
+        
+        
+//        if chatBoxBtn != ""
+//        {
+//            chatArry.append(chatBoxBtn)
+//            userNameToChat.append(nameID)
+//            chatBox.text = nil
+//            self.chatTV.reloadData()
+//            print(userNameToChat)
+//
+//        }
+//        else
+//        {
+//           print("空白輸入匡")
+//        }
     }
     
     // 文字輸入匡
