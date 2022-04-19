@@ -58,7 +58,6 @@ class memberProfileVC: UIViewController {
         do {
             try? Auth.auth().signOut()
             performSegue(withIdentifier: "onSignOutBtn", sender: self)
-            CustomToast.show(message: "再見！", controller: self)
         } catch  {
             print("登出時發生錯誤：\(error)")
         }

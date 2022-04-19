@@ -16,11 +16,16 @@ class signInVC: UIViewController{
     @IBOutlet weak var passWordText: UITextField!
     var memberSignInVC: Member?
     var handle: AuthStateDidChangeListenerHandle?
+    var goldfishBrain = ""
+    var goToRegister = ""
+    var exceed = ""
+    var lowerThan = ""
     
     override func viewDidLoad() { //先執行它
         super.viewDidLoad()
         EmailText.delegate = self
         navigationItem.hidesBackButton = true //隱藏 back 按鍵
+        multilingual() // 多語系設定
     }
     
     // 監聽器
@@ -49,7 +54,7 @@ class signInVC: UIViewController{
         guard
             eMailTextBtn != "" || passWordBtn != ""
         else{
-            CustomToast.show(message: "來去註冊", bgColor: .cyan, textColor: .yellow, labelFont: .boldSystemFont(ofSize: 15), showIn: .bottom, controller: self)
+            CustomToast.show(message: self.goToRegister, bgColor: .cyan, textColor: .yellow, labelFont: .boldSystemFont(ofSize: 20), showIn: .bottom, controller: self)
             sender.isEnabled = true //讓他有該有的功能
             return
         }
@@ -58,7 +63,7 @@ class signInVC: UIViewController{
             result,error in
             guard let user = result?.user,
                   error == nil else{
-                CustomToast.show(message: "金魚腦！密碼錯誤", bgColor: .red, textColor: .black, labelFont: .boldSystemFont(ofSize: 15), showIn: .top, controller: self)
+                CustomToast.show(message: self.goldfishBrain, bgColor: .red, textColor: .black, labelFont: .boldSystemFont(ofSize: 20), showIn: .top, controller: self)
                 return
                   }
             
@@ -80,13 +85,24 @@ class signInVC: UIViewController{
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+    // 滾動收鍵盤
+     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        view.endEditing(true)  //沒有功能
+    }
+
     override func prepare (for segue: UIStoryboardSegue, sender: Any?){
         if let memberProfileVC = segue.destination as? memberProfileVC{
             memberProfileVC.member = memberSignInVC
 
         }
     }
-
+    // 多語系設定
+    func multilingual(){
+        goldfishBrain = NSLocalizedString("goldfishBrain", comment: "金魚腦！密碼錯誤!")
+        goToRegister = NSLocalizedString("goToRegister", comment: "來去註冊")
+        exceed = NSLocalizedString("exceed", comment: "長度超過20字元")
+        lowerThan = NSLocalizedString("lowerThan", comment: "長度低於4字元")
+    }
 }
 // [A-Z0-9a-z]+@[A-Za-z0-9]+\\.[A-Za-z]{2,64}
 extension signInVC:UITextFieldDelegate{
@@ -100,12 +116,12 @@ extension signInVC:UITextFieldDelegate{
             }
             
             if range.location > 19 {
-                CustomToast.show(message: "長度超過20字元", bgColor: .blue, textColor: .yellow, labelFont: .boldSystemFont(ofSize: 15), showIn: .top, controller: self)
+                CustomToast.show(message: self.exceed, bgColor: .blue, textColor: .yellow, labelFont: .boldSystemFont(ofSize: 20), showIn: .top, controller: self)
                 return false
             }
 
             if range.location < 4 {
-                CustomToast.show(message: "長度低於4字元", bgColor: .separator, textColor: .systemIndigo, labelFont: .boldSystemFont(ofSize: 15), showIn: .top, controller: self)
+                CustomToast.show(message: self.lowerThan, bgColor: .separator, textColor: .systemIndigo, labelFont: .boldSystemFont(ofSize: 20), showIn: .top, controller: self)
             }
             
         }

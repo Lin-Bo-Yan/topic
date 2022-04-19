@@ -17,10 +17,16 @@ class liveRoomVC: UIViewController {
     var player : AVPlayer?
     var chatArry = [String]()
     var userNameToChat = [String]()
-    var nameID = "訪客"
     var webSocket : URLSessionWebSocketTask?
-
     var handle: AuthStateDidChangeListenerHandle?
+    
+    var nameID = ""
+    var system = ""
+    var enter = ""
+    var leave = ""
+    var wantToLeave = ""
+    var confirm = ""
+    var cancel = ""
     
     @IBOutlet var chatTV: UITableView!
     @IBOutlet var chatBox: UITextField!
@@ -33,6 +39,7 @@ class liveRoomVC: UIViewController {
         view.layer .addSublayer(self.layer) // 呼叫播放器
         player?.play()  //進行播放
         self.view.layer.insertSublayer(layer, at: 0)//放在圖層底部
+        multilingual() // 多語系設定
     }
     override func viewWillAppear(_ animated: Bool) {
         handle = Auth.auth().addStateDidChangeListener({ auth, user in
@@ -73,8 +80,8 @@ class liveRoomVC: UIViewController {
     
     // 建立連線
     func openWebSocket() {
-        
-                let urlString = "wss://lott-dev.lottcube.asia/ws/chat/chat:app_test?nickname=\(nameID)"
+    
+                let urlString = "wss://client-dev.lottcube.asia/ws/chat/chat:app_test?nickname=\(nameID)"
                 //let str = urlString
                 let strAfter = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
             if let url = URL(string: strAfter!) {
@@ -112,15 +119,15 @@ class liveRoomVC: UIViewController {
                                 self.userNameToChat.append(test!.body!.nickname!)
                             case 5:
                                 self.chatArry.append(test!.body!.content!.tw!)
-                                self.userNameToChat.append("系統")
+                                self.userNameToChat.append(self.system)
                             case 0: //接到 body 裡面的資料，然後再去細分
                                 self.userNameToChat.append(test!.body!.entry_notice!.username!)
                                 switch test!.body!.entry_notice!.action!{ //body裡面的 action
                                 case "enter" :
-                                    self.chatArry.append("進入")
+                                    self.chatArry.append(self.enter)
                                     //print("我進入")
                                 case "leave" :
-                                    self.chatArry.append("離開")
+                                    self.chatArry.append(self.leave)
                                     //print("離開")
                                                                         
                                 default:
@@ -146,6 +153,7 @@ class liveRoomVC: UIViewController {
     
     @IBAction func onEnterClick(_ sender: Any) {
         var chatBoxBtn = chatBox.text ?? ""
+        
         if chatBoxBtn.trimmingCharacters(in: .whitespaces) == ""{
             print("empty")
         }else{
@@ -185,12 +193,12 @@ class liveRoomVC: UIViewController {
     @IBAction func onLeaveClick(_ sender: Any) {
         
         let alertController = UIAlertController(
-               title: "你確定要離開嗎？",
+            title: self.wantToLeave,
                message: nil,
                preferredStyle: .alert)
         
         let okAction = UIAlertAction(
-               title: "確認",
+            title: self.confirm,
                style: .default,
                handler: { alertAction in
                    self.player?.pause()
@@ -199,7 +207,7 @@ class liveRoomVC: UIViewController {
         )
         
         let notAction = UIAlertAction(
-               title: "取消",
+            title: self.cancel,
                style: .default,
                handler: nil
         )
@@ -215,6 +223,19 @@ class liveRoomVC: UIViewController {
         let layer = AVPlayerLayer(player: player)
         return layer
     }()
+    // 多語系設定
+    func multilingual(){
+        nameID = NSLocalizedString("visitor", comment: "nameID")
+        system = NSLocalizedString("system", comment: "系統")
+        enter = NSLocalizedString("enter", comment: "進入")
+        leave = NSLocalizedString("leave", comment: "離開")
+        wantToLeave = NSLocalizedString("wantToLeave", comment: "你確定要離開嗎？")
+        confirm = NSLocalizedString("confirm", comment: "確認")
+        cancel = NSLocalizedString("cancel", comment: "取消")
+    }
+    
+    
+    
 }
 extension liveRoomVC : UITableViewDelegate ,UITableViewDataSource{
     

@@ -22,8 +22,8 @@ class searchPagCVC: UICollectionViewController ,UISearchBarDelegate, UISearchRes
         super.viewDidLoad()
         
         let layout = UICollectionViewFlowLayout()
-        let fullScreenSize = collectionView.bounds.width/2 - 20
-        let fullScreenSizeTwo = collectionView.bounds.width/2 - 20
+        let fullScreenSize = collectionView.bounds.width/2 - 10
+        let fullScreenSizeTwo = collectionView.bounds.width/2 - 10
         layout.itemSize = CGSize(width:fullScreenSize, height: fullScreenSizeTwo)
         layout.minimumLineSpacing = 5 //設定cell與cell間的縱距
         collectionView.collectionViewLayout = layout
@@ -132,6 +132,10 @@ class searchPagCVC: UICollectionViewController ,UISearchBarDelegate, UISearchRes
         })
         task.resume()
     }
+    // 滾動收鍵盤
+    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+            self.view.endEditing(true) //沒有作用
+    }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -153,7 +157,6 @@ class searchPagCVC: UICollectionViewController ,UISearchBarDelegate, UISearchRes
 
         return cell
     }
-
     
 
 }

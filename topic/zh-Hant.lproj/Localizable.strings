@@ -1,0 +1,25 @@
+/* 
+  Localizable.strings
+  topic
+
+  Created by Class on 2022/4/19.
+  
+*/
+"visitor" = "訪客";
+"system" = "系統";
+"enter" = "進入";
+"leave" = "離開";
+"wantToLeave" = "你確定要離開嗎?";
+"confirm" = "確認";
+"cancel" = "取消";
+"goToRegister" = "來去註冊";
+"goldfishBrain" = "金魚腦！密碼錯誤!";
+"exceed" = "長度超過20字元";
+"lowerThan" = "長度低於4字元";
+"correctFormat" = "請輸入正確格式";
+"giveMeText" = "要給我文字吃喔!";
+"select" = "拍照?從照片選取?從相簿選取?";
+"camera" = "相機";
+"album" = "相簿";
+"wrongFormat" = "格式錯誤";
+"registrationSuccess" = "註冊成功！";

@@ -19,8 +19,8 @@ class liveStreamingCVC: UICollectionViewController {
         super.viewDidLoad()
         
         let layout = UICollectionViewFlowLayout()
-        let fullScreenSize = collectionView.bounds.width/2 - 20
-        let fullScreenSizeTwo = collectionView.bounds.width/2 - 20
+        let fullScreenSize = collectionView.bounds.width/2 - 10
+        let fullScreenSizeTwo = collectionView.bounds.width/2 - 10
         layout.itemSize = CGSize(width:fullScreenSize, height: fullScreenSizeTwo)
         layout.minimumLineSpacing = 5 //設定cell與cell間的縱距
         collectionView.collectionViewLayout = layout

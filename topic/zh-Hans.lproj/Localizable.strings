@@ -1,0 +1,25 @@
+/* 
+  Localizable.strings
+  topic
+
+  Created by Class on 2022/4/19.
+  
+*/
+"visitor" = "访客";
+"system" = "系统";
+"Enter" = "进入";
+"leave" = "离开";
+"wantToLeave" = "你确定要离开吗?";
+"confirm" = "确认";
+"cancel" = "取消";
+"goToRegister" = "来去注册";
+"goldfishBrain" = "金鱼脑！密码错误!";
+"exceed" = "长度超过20字元";
+"lowerThan" = "长度低于4字元";
+"correctFormat" = "请输入正确格式";
+"giveMeText" = "要给我文字吃喔!";
+"select" = "拍照?从照片选取?从相簿选取?";
+"camera" = "相机";
+"album" = "相簿";
+"wrongFormat" = "格式错误";
+"registrationSuccess" = "注册成功！";

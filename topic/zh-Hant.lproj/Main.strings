@@ -1,0 +1,87 @@
+
+/* Class = "UITextField"; placeholder = "暱稱"; ObjectID = "0YO-ZC-GTo"; */
+"0YO-ZC-GTo.placeholder" = "暱稱";
+
+/* Class = "UILabel"; text = "暱稱："; ObjectID = "5sD-Oz-1WK"; */
+"5sD-Oz-1WK.text" = "暱稱：";
+
+/* Class = "UILabel"; text = "online_num"; ObjectID = "7vc-Ka-Mjo"; */
+"7vc-Ka-Mjo.text" = "online_num";
+
+/* Class = "UILabel"; text = "online_num"; ObjectID = "8fc-Cv-ce0"; */
+"8fc-Cv-ce0.text" = "online_num";
+
+/* Class = "UILabel"; text = "tags"; ObjectID = "BkX-0Z-PEr"; */
+"BkX-0Z-PEr.text" = "tags";
+
+/* Class = "UILabel"; text = "tags"; ObjectID = "Bof-Yi-YS0"; */
+"Bof-Yi-YS0.text" = "tags";
+
+/* Class = "UIButton"; configuration.title = "註冊"; ObjectID = "Ejl-oT-Cla"; */
+"Ejl-oT-Cla.configuration.title" = "註冊";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Ejl-oT-Cla"; */
+"Ejl-oT-Cla.normalTitle" = "註冊";
+
+/* Class = "UILabel"; text = "stream_title"; ObjectID = "Gby-Qq-OzS"; */
+"Gby-Qq-OzS.text" = "stream_title";
+
+/* Class = "UITextField"; placeholder = "信箱"; ObjectID = "JJh-cR-aKu"; */
+"JJh-cR-aKu.placeholder" = "信箱";
+
+/* Class = "UIButton"; configuration.title = "登入"; ObjectID = "Pdu-cj-FKV"; */
+"Pdu-cj-FKV.configuration.title" = "登入";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Pdu-cj-FKV"; */
+"Pdu-cj-FKV.normalTitle" = "登入";
+
+/* Class = "UITabBarItem"; title = "收尋"; ObjectID = "SgG-p2-BGR"; */
+"SgG-p2-BGR.title" = "收尋";
+
+/* Class = "UILabel"; text = "信箱："; ObjectID = "UH7-LY-gxT"; */
+"UH7-LY-gxT.text" = "信箱：";
+
+/* Class = "UITextField"; placeholder = "密碼"; ObjectID = "VpZ-P1-JGf"; */
+"VpZ-P1-JGf.placeholder" = "密碼";
+
+/* Class = "UITabBarItem"; title = "首頁"; ObjectID = "Vx3-4N-0y0"; */
+"Vx3-4N-0y0.title" = "首頁";
+
+/* Class = "UILabel"; text = "nickname"; ObjectID = "Zdz-iW-sUI"; */
+"Zdz-iW-sUI.text" = "nickname";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "buZ-7b-qce"; */
+"buZ-7b-qce.normalTitle" = "Button";
+
+/* Class = "UINavigationItem"; title = "會員"; ObjectID = "cEN-1f-4sK"; */
+"cEN-1f-4sK.title" = "會員";
+
+/* Class = "UITextField"; placeholder = "密碼"; ObjectID = "eCV-2W-a92"; */
+"eCV-2W-a92.placeholder" = "密碼";
+
+/* Class = "UITabBarItem"; title = "個人"; ObjectID = "ehe-A9-5MH"; */
+"ehe-A9-5MH.title" = "個人";
+
+/* Class = "UILabel"; text = "stream_title"; ObjectID = "evT-h2-KNY"; */
+"evT-h2-KNY.text" = "stream_title";
+
+/* Class = "UITextField"; placeholder = "信箱"; ObjectID = "pG5-A9-QvE"; */
+"pG5-A9-QvE.placeholder" = "信箱";
+
+/* Class = "UIButton"; configuration.title = "送出"; ObjectID = "pa1-hn-6va"; */
+"pa1-hn-6va.configuration.title" = "送出";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "pa1-hn-6va"; */
+"pa1-hn-6va.normalTitle" = "送出";
+
+/* Class = "UITextView"; text = "tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt"; ObjectID = "stb-SB-mpY"; */
+"stb-SB-mpY.text" = "tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt tttt";
+
+/* Class = "UILabel"; text = "nickname"; ObjectID = "t5v-fq-MSi"; */
+"t5v-fq-MSi.text" = "nickname";
+
+/* Class = "UIButton"; configuration.title = "登出"; ObjectID = "xi1-FL-GoD"; */
+"xi1-FL-GoD.configuration.title" = "登出";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "xi1-FL-GoD"; */
+"xi1-FL-GoD.normalTitle" = "登出";

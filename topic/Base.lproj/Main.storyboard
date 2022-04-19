@@ -774,6 +774,11 @@
                                     <constraint firstAttribute="width" constant="140" id="Qwt-Kp-cLx"/>
                                     <constraint firstAttribute="height" constant="140" id="sbd-pg-sNN"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="43" translatesAutoresizingMaskIntoConstraints="NO" id="6UE-Ir-wko">
                                 <rect key="frame" x="116.66666666666669" y="383.33333333333331" width="142" height="142.99999999999994"/>
@@ -794,6 +799,14 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="5sD-Oz-1WK" firstAttribute="top" secondItem="Lpw-Oh-yhI" secondAttribute="top" id="1y0-5P-99v"/>
+                                            <constraint firstItem="5sD-Oz-1WK" firstAttribute="leading" secondItem="Lpw-Oh-yhI" secondAttribute="leading" id="5Fq-Uc-avg"/>
+                                            <constraint firstAttribute="bottom" secondItem="FFu-gi-vMR" secondAttribute="bottom" id="LtQ-PT-LSJ"/>
+                                            <constraint firstAttribute="bottom" secondItem="5sD-Oz-1WK" secondAttribute="bottom" id="ZEC-Ac-KjF"/>
+                                            <constraint firstItem="FFu-gi-vMR" firstAttribute="top" secondItem="Lpw-Oh-yhI" secondAttribute="top" id="lf6-H3-h0y"/>
+                                            <constraint firstAttribute="trailing" secondItem="FFu-gi-vMR" secondAttribute="trailing" id="yog-W7-TTw"/>
+                                        </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="ms1-vf-Wcj">
                                         <rect key="frame" x="0.0" y="93" width="142" height="50"/>
@@ -811,6 +824,15 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="UH7-LY-gxT" secondAttribute="bottom" id="1dr-6N-Xs7"/>
+                                            <constraint firstItem="UH7-LY-gxT" firstAttribute="leading" secondItem="ms1-vf-Wcj" secondAttribute="leading" id="1iR-Qk-bn4"/>
+                                            <constraint firstItem="Lxi-jO-ugy" firstAttribute="leading" secondItem="UH7-LY-gxT" secondAttribute="trailing" constant="40" id="DRv-Lj-NMS"/>
+                                            <constraint firstAttribute="bottom" secondItem="Lxi-jO-ugy" secondAttribute="bottom" id="K7T-pJ-ssE"/>
+                                            <constraint firstItem="Lxi-jO-ugy" firstAttribute="top" secondItem="ms1-vf-Wcj" secondAttribute="top" id="Vv7-PW-JVp"/>
+                                            <constraint firstAttribute="trailing" secondItem="Lxi-jO-ugy" secondAttribute="trailing" id="WNs-2S-oQl"/>
+                                            <constraint firstItem="UH7-LY-gxT" firstAttribute="top" secondItem="ms1-vf-Wcj" secondAttribute="top" id="all-Qg-AF5"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                             </stackView>
@@ -892,7 +914,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="dYo-yX-cCp"/>
         <segue reference="MLN-rd-dln"/>
     </inferredMetricsTieBreakers>
     <resources>

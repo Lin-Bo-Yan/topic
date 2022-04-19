@@ -20,18 +20,25 @@ class signUpVC: UIViewController,UIImagePickerControllerDelegate, UINavigationCo
     @IBOutlet weak var EmailText: UITextField!
     @IBOutlet weak var passWordText: UITextField!
     @IBOutlet weak var photoImageView: UIImageView!
-    
+    var correctFormat = ""
+    var select = ""
+    var camera = ""
+    var album = ""
+    var wrongFormat = ""
+    var registrationSuccess = ""
+    var confirm = ""
+    var cancel = ""
+    var giveMeText = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePickerController.delegate = self
-        
+        multilingual() // 多語系設定
     }
     override func viewWillAppear(_ animated: Bool) {
         Auth.auth().signInAnonymously{(result,error) in if let error = error{print(error.localizedDescription)}}
     }
     
-    // 按鈕尚未完成
     @IBAction func ButtonOnClick(_ sender: Any) {
            let nickNameBtn = nickName.text ?? ""
            let EmailTextBtn = EmailText.text ?? ""
@@ -40,30 +47,36 @@ class signUpVC: UIViewController,UIImagePickerControllerDelegate, UINavigationCo
             EmailTextBtn != ""  || nickNameBtn != "" || passWordBtn != ""
         else
         {
-            CustomToast.show(message: "請輸入正確格式", bgColor: .cyan, textColor: .yellow, labelFont: .boldSystemFont(ofSize: 15), showIn: .bottom, controller: self)
+            CustomToast.show(message: self.giveMeText, bgColor: .cyan, textColor: .yellow, labelFont: .boldSystemFont(ofSize: 20), showIn: .bottom, controller: self)
             return
         }
-        authentication(emailTextAuth: EmailTextBtn, passWordTextAuth: passWordBtn)
+        
+        if cheackIfEmailFormat(EmailTextBtn) == true && isPassWordValid(passWordBtn) == true
+        {
+            authentication(emailTextAuth: EmailTextBtn, passWordTextAuth: passWordBtn)
+        }else{
+            CustomToast.show(message: self.correctFormat, bgColor: .purple, textColor: .green, labelFont: .boldSystemFont(ofSize: 20), showIn: .top, controller: self)
+        }
     }
     
     
     @IBAction func replace(_ sender: Any) {
-        let controller = UIAlertController(title: "拍照?從照片選取?從相簿選取?", message: "", preferredStyle: .alert)
+        let controller = UIAlertController(title: self.select, message: "", preferredStyle: .alert)
             controller.view.tintColor = UIColor.gray
         
         // 相機
-            let cameraAction = UIAlertAction(title: "相機", style: .default) { _ in
+        let cameraAction = UIAlertAction(title: self.camera, style: .default) { _ in
                 self.takePicture()
             }
             controller.addAction(cameraAction)
 
             // 相薄
-            let savedPhotosAlbumAction = UIAlertAction(title: "相簿", style: .default) { _ in
+        let savedPhotosAlbumAction = UIAlertAction(title: self.album, style: .default) { _ in
                 self.openPhotosAlbum()
             }
             controller.addAction(savedPhotosAlbumAction)
 
-            let cancelAction = UIAlertAction(title: "取消", style: .destructive, handler: nil)
+        let cancelAction = UIAlertAction(title: self.cancel, style: .destructive, handler: nil)
             controller.addAction(cancelAction)
 
             self.present(controller, animated: true, completion: nil)
@@ -120,48 +133,12 @@ class signUpVC: UIViewController,UIImagePickerControllerDelegate, UINavigationCo
     }
     
     
-    /*
-    func upload(_ image: UIImage,_ accountAddress:String, completion: @escaping (Result<URL, Error>) -> Void) {
-        let data = image.jpegData(compressionQuality: 0.5)
-
-          // Change the content type to jpg. If you don't, it'll be saved as application/octet-stream type
-          let metadata = StorageMetadata()
-          metadata.contentType = "image.jpeg"
-        
-        let path = "image/\(UUID().uuidString).jpg" //總路徑
-        let storageRef = Storage.storage().reference().child(path)
-        
-          // Upload the image
-          if let data = data {
-              storageRef.putData(data, metadata: nil) { result,user  in
-                  print(result)
-                  switch result {
-                  case .failure(let error):
-                      print("data錯誤：\(error)")
-                      completion(.failure(error))
-                  case .success(_):
-                      storageRef.downloadURL { result in
-                          switch result {
-                          case .success(let url):
-                              completion(.success(url))
-                          case .failure(let error):
-                              completion(.failure(error))
-                              print("url錯誤：\(error)")
-                          }
-                      }
-              }
-              }
-              
-          }
-    }  // upload
-    */
-    
     func authentication(emailTextAuth:String,passWordTextAuth:String){
         FirebaseAuth.Auth.auth().createUser(withEmail: emailTextAuth, password: passWordTextAuth){
             result, error in
             guard let user = result?.user,
                   error == nil else {
-                CustomToast.show(message: "格式錯誤", bgColor: .red, textColor: .black, labelFont: .boldSystemFont(ofSize: 15), showIn: .top, controller: self)
+                CustomToast.show(message: self.wrongFormat, bgColor: .red, textColor: .black, labelFont: .boldSystemFont(ofSize: 15), showIn: .top, controller: self)
                 print("電子郵件地址格式錯誤:\(error?.localizedDescription)")
                 return
             }
@@ -184,12 +161,12 @@ class signUpVC: UIViewController,UIImagePickerControllerDelegate, UINavigationCo
                     return
                 }
                 let alertController = UIAlertController(
-                       title: "註冊成功！",
+                    title: self.registrationSuccess,
                        message: nil,
                        preferredStyle: .alert)
                 
                 let okAction = UIAlertAction(
-                       title: "確認",
+                    title: self.confirm,
                        style: .default,
                        handler: { alertAction in
                            self.navigationController?.popViewController(animated: true)
@@ -199,69 +176,39 @@ class signUpVC: UIViewController,UIImagePickerControllerDelegate, UINavigationCo
                 alertController.addAction(okAction)
                 self.present(alertController, animated: true, completion: nil)
             }
-           
-           
         }
     }// authentication
-
     
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-
-
-              
-//              storageRef.putData(data, metadata: metadata) { (metadata, error) in
-//                  if let error = error {
-//                      print("上傳文件時出錯: ", error)
-//                  }
-//
-//                  if let metadata = metadata {
-//                      print("上傳成功: ", metadata)
-//                  }
-//              }
-
-    
-/*
-extension signUpVC:UITextFieldDelegate{
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
-        if string.count > 0 {
-            
-            let result = replce(pattern: "[^A-Za-z0-9@.]", source: string, to: "")
-            if result.count == 0{
-                return false
-            }
-            if range.location > 19 {
-                CustomToast.show(message: "長度超過20字元", bgColor: .blue, textColor: .yellow, labelFont: .boldSystemFont(ofSize: 15), showIn: .top, controller: self)
-                return false
-            }
-
-            if range.location < 4 {
-                CustomToast.show(message: "長度低於4字元", bgColor: .separator, textColor: .systemIndigo, labelFont: .boldSystemFont(ofSize: 15), showIn: .top, controller: self)
-            }
-            
-        }
-        return true
-    }
-    
-    func replce(pattern:String,source:String,to:String) -> String{
-        let regex = try! NSRegularExpression(pattern: pattern, options: [])
-        let result = regex.stringByReplacingMatches(in: source, options: [], range: NSMakeRange(0, source.count), withTemplate: to)
-
-        return result
+    // 多語系設定
+    func multilingual(){
+        correctFormat = NSLocalizedString("correctFormat", comment: "請輸入正確格式")
+        giveMeText = NSLocalizedString("giveMeText", comment: "要給我文字吃喔!")
+        select = NSLocalizedString("select", comment: "拍照?從照片選取?從相簿選取?")
+        camera = NSLocalizedString("camera", comment: "相機")
+        album = NSLocalizedString("album", comment: "相簿")
+        wrongFormat = NSLocalizedString("wrongFormat", comment: "格式錯誤")
+        registrationSuccess = NSLocalizedString("registrationSuccess", comment: "註冊成功！")
+        confirm = NSLocalizedString("confirm", comment: "確認")
+        cancel = NSLocalizedString("cancel", comment: "取消")
     }
 }
-*/
+// 檢查是否為Email格式
+func cheackIfEmailFormat(_ mail:String) -> Bool{
+    var retureValue = false
+    let mailPattern = "^([a-za-z0-9_\\.-]+)@([\\da-z\\.-]+)\\.([a-z\\.]{2,6})$"
+    let mailRegular = try! NSRegularExpression(pattern: mailPattern, options: .caseInsensitive)
+    let results = mailRegular.matches(in: mail, options: [], range: NSMakeRange(0, (mail as NSString).length))
+    if results.count > 0{
+        retureValue = true
+    }
+    return retureValue
+}
+
+// 檢查密碼格式
+func isPassWordValid(_ password:String) -> Bool {
+    let passwordTest = NSPredicate(format: "SELF MATCHES %@", "^[a-za-z0-9]{6,12}+$")
+    return passwordTest.evaluate(with: password)
+}
 
 
 
@@ -359,4 +306,38 @@ extension signUpVC:UITextFieldDelegate{
         }
        */
 
+/*
+func upload(_ image: UIImage,_ accountAddress:String, completion: @escaping (Result<URL, Error>) -> Void) {
+    let data = image.jpegData(compressionQuality: 0.5)
 
+      // Change the content type to jpg. If you don't, it'll be saved as application/octet-stream type
+      let metadata = StorageMetadata()
+      metadata.contentType = "image.jpeg"
+    
+    let path = "image/\(UUID().uuidString).jpg" //總路徑
+    let storageRef = Storage.storage().reference().child(path)
+    
+      // Upload the image
+      if let data = data {
+          storageRef.putData(data, metadata: nil) { result,user  in
+              print(result)
+              switch result {
+              case .failure(let error):
+                  print("data錯誤：\(error)")
+                  completion(.failure(error))
+              case .success(_):
+                  storageRef.downloadURL { result in
+                      switch result {
+                      case .success(let url):
+                          completion(.success(url))
+                      case .failure(let error):
+                          completion(.failure(error))
+                          print("url錯誤：\(error)")
+                      }
+                  }
+          }
+          }
+          
+      }
+}  // upload
+*/
