@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import AVFoundation
+import AVKit
 
 private let reuseIdentifier = "Cell"
 
@@ -15,24 +17,6 @@ class liveStreamingCVC: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        liveStreamingCVC.registerClass(
-//            liveStreamingCell.self,
-//          forCellWithReuseIdentifier: "Cell")
-        
-//        fullScreenSize = UIScreen.main.bounds.size
-//        // 設定UICollectionView背景色
-//        collectionView.backgroundColor = UIColor.white
-//        // 取得UICollectionView排版物件
-//        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-//        // 設定整個Collection View內容與邊界的間距，而非內容物之間的間距，sectionInset內容物和邊界的間距
-//        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0);
-//        // 設定內容物每一列的間距
-//        layout.minimumLineSpacing = 5
-//        // 設定內容每個項目的尺寸。除以3代表一列3個，-10代表間距10
-//        layout.itemSize = CGSize(
-//            width: CGFloat(fullScreenSize.width)/2 - 20.0,
-//            height: CGFloat(fullScreenSize.width)/2 - 20.0)
-        
         
         let layout = UICollectionViewFlowLayout()
         let fullScreenSize = collectionView.bounds.width/2 - 20
@@ -43,19 +27,11 @@ class liveStreamingCVC: UICollectionViewController {
         collectionView.dataSource = self
         let list : mySteamer = load("result")
         stamers = list.result.stream_list
-        //print(stamers)
+        
         
         
     }
-
-   
-
-//    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-//
-//        return 2
-//    }
-
-
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return stamers.count
@@ -65,6 +41,7 @@ class liveStreamingCVC: UICollectionViewController {
         // 連結cell 要下
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! liveStreamingCell
+        
         cell.headPhoto.image = UIImage(named: "paopao")
         cell.headPhoto.contentMode = .scaleToFill
         cell.headPhoto.clipsToBounds = true
@@ -74,6 +51,14 @@ class liveStreamingCVC: UICollectionViewController {
         cell.tags.text = stamers[indexPath.row].tags
         getData(stamers[indexPath.row].head_photo,  cell.headPhoto)
         return cell
+    }
+    //  點擊CollectionViewCell跳轉到直播影片
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let controller = self.storyboard?.instantiateViewController(withIdentifier: "liveRoomID") as? liveRoomVC
+        { controller.modalPresentationStyle = .fullScreen
+            self.present(controller, animated: true, completion: nil)
+            
+        }
     }
     
     func load<T: Decodable>(_ filename: String) -> T {
@@ -98,7 +83,6 @@ class liveStreamingCVC: UICollectionViewController {
         DispatchQueue.main.async {
             self.collectionView.reloadData()
         }
-
     }
     
     func getData (_ url_str:String, _ imageView:UIImageView){
@@ -118,5 +102,12 @@ class liveStreamingCVC: UICollectionViewController {
         })
         task.resume()
     }
+    
+    
      
     }
+
+
+//        liveStreamingCVC.registerClass(
+//            liveStreamingCell.self,
+//          forCellWithReuseIdentifier: "Cell")

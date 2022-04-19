@@ -22,6 +22,28 @@ class Member {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //    var nickName: String
 //    var passWord: String
     

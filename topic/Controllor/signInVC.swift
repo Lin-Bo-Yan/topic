@@ -10,53 +10,69 @@ import Firebase
 import FirebaseAuth
 import FirebaseFirestore
 import SwiftUI
-class signInVC: UIViewController,UITextFieldDelegate{
-
+class signInVC: UIViewController{
+    static var signIn : Bool = false // 未登入狀態
     
     @IBOutlet weak var EmailText: UITextField!
     @IBOutlet weak var passWordText: UITextField!
     var memberSignInVC: Member?
+    var handle: AuthStateDidChangeListenerHandle?
     
-    override func viewDidLoad() {
+    override func viewDidLoad() { //先執行它
         super.viewDidLoad()
-        // 匿名驗證
-        Auth.auth().signInAnonymously{(user,error) in
-            if let error = error{
-                print(error.localizedDescription)
-            }
-        }
+        EmailText.delegate = self
         navigationItem.hidesBackButton = true //隱藏 back 按鍵
     }
     
-    @IBAction func signInOnClick(_ sender: Any) {
+    // 監聽器
+    override func viewWillAppear(_ animated: Bool) {
+        handle = Auth.auth().addStateDidChangeListener({ auth, user in
+            guard user != nil else{
+                print("沒有監聽到資料")
+                return
+            }
+            guard
+                let email = user?.email,
+                let nickName = user?.displayName
+            else {
+                //self.nameID = "訪客wells"
+                print("有資料，但拿的時候出問題了")
+                return
+            }
+        })
+    } // viewWillAppear
+
+    
+    
+    @IBAction func signInOnClick(_ sender: UIButton) {
         let eMailTextBtn = EmailText.text ?? ""
         let passWordBtn = passWordText.text ?? ""
-        if  eMailTextBtn != "" || passWordBtn != "" { //判斷用戶是否沒輸入
-            
-            let reference = Firestore.firestore().collection("玩家")
-            reference.document(eMailTextBtn).getDocument{(snapshop, error) in
-                if let error = error
-                {
-                    print("閉包錯誤：\(error.localizedDescription)")
-                }
-                    if let snapshot = snapshop
-                    {
-                        let passWordData = snapshot.data()?["密碼"] // 這個值取出來是Any型別 需要轉型成String
-                        let eMailData = snapshot.data()?["信箱"]
-                        if(passWordBtn == passWordData as! String){
-                            self.memberSignInVC = Member(eMailData as! String)
-                            self.performSegue(withIdentifier: "ToIndexScreen", sender: self)
-                        }else{
-                            print("密碼錯誤")
-                        }
-                    }
-            }
-
-        }else{
-            print("可能沒有這組帳號密碼")
+        guard
+            eMailTextBtn != "" || passWordBtn != ""
+        else{
+            CustomToast.show(message: "來去註冊", bgColor: .cyan, textColor: .yellow, labelFont: .boldSystemFont(ofSize: 15), showIn: .bottom, controller: self)
+            sender.isEnabled = true //讓他有該有的功能
+            return
         }
         
-            }
+        Auth.auth().signIn(withEmail: eMailTextBtn, password: passWordBtn){
+            result,error in
+            guard let user = result?.user,
+                  error == nil else{
+                CustomToast.show(message: "金魚腦！密碼錯誤", bgColor: .red, textColor: .black, labelFont: .boldSystemFont(ofSize: 15), showIn: .top, controller: self)
+                return
+                  }
+            
+            //登入成功頁面跳轉
+            if let user = Auth.auth().currentUser {
+                print("\(user.uid) 成功")
+                //登入成功頁面跳轉
+                self.memberSignInVC = Member(eMailTextBtn as! String)
+                self.performSegue(withIdentifier: "ToIndexScreen", sender: self)
+            } }
+        
+            } // signInOnClick
+    
     //map(String.init(describing:)) ?? "nil" 取出所有的值
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
        self.view.endEditing(true)
@@ -71,18 +87,55 @@ class signInVC: UIViewController,UITextFieldDelegate{
 
         }
     }
-    
-    
-//self.verify(passWordBtn,passWordData as! String)
-//    func verify(_ optional :String ,_ optionalTwo :String ){
-//        if(optional == optionalTwo){
-//            print("密碼正確")
-//        }else{
-//            print("密碼錯誤")
-//        }
-//    }
-    
+
 }
+// [A-Z0-9a-z]+@[A-Za-z0-9]+\\.[A-Za-z]{2,64}
+extension signInVC:UITextFieldDelegate{
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        if string.count > 0 {
+            let result = replce(pattern: "[^A-Za-z0-9@.]", source: string, to: "")
+            if result.count == 0{
+                return false
+            }
+            
+            if range.location > 19 {
+                CustomToast.show(message: "長度超過20字元", bgColor: .blue, textColor: .yellow, labelFont: .boldSystemFont(ofSize: 15), showIn: .top, controller: self)
+                return false
+            }
+
+            if range.location < 4 {
+                CustomToast.show(message: "長度低於4字元", bgColor: .separator, textColor: .systemIndigo, labelFont: .boldSystemFont(ofSize: 15), showIn: .top, controller: self)
+            }
+            
+        }
+        return true
+    }
+
+    func replce(pattern:String,source:String,to:String) -> String{
+        let regex = try! NSRegularExpression(pattern: pattern, options: [])
+        let result = regex.stringByReplacingMatches(in: source, options: [], range: NSMakeRange(0, source.count), withTemplate: to)
+
+        return result
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
  設定資料
  let ref = Database.database().reference()
@@ -205,3 +258,47 @@ if let user = Auth.auth().currentUser {
  }
  */
 // let snapshotData = snapshot.data().map(String.init(describing:)) ?? "nil" 取全部的值
+
+
+//self.verify(passWordBtn,passWordData as! String)
+//    func verify(_ optional :String ,_ optionalTwo :String ){
+//        if(optional == optionalTwo){
+//            print("密碼正確")
+//        }else{
+//            print("密碼錯誤")
+//        }
+//    }
+
+
+// 換頁
+//                            if let controller = self.storyboard?.instantiateViewController(withIdentifier: "memberProfileVC") as? memberProfileVC
+//                            { controller.modalPresentationStyle = .fullScreen
+//                                    self.present(controller, animated: true, completion: nil)
+//                            }
+
+//用 firestore 做登入判定 但是不能判定帳號
+/*
+ let reference = Firestore.firestore().collection("玩家")
+ reference.document(eMailTextBtn).getDocument{(snapshop, error) in
+     if let error = error
+     {
+         CustomToast.show(message: "信箱錯誤", bgColor: .red, textColor: .black, labelFont: .boldSystemFont(ofSize: 15), showIn: .top, controller: self)
+         //print("閉包錯誤：\(error.localizedDescription)")
+     }else{
+         if let snapshot = snapshop
+         {
+             let passWordData = snapshot.data()?["密碼"] // 這個值取出來是Any型別 需要轉型成String
+             let eMailData = snapshot.data()?["信箱"]
+             
+             guard
+                 passWordBtn == passWordData as! String
+             else{
+                 CustomToast.show(message: "密碼錯誤", bgColor: .red, textColor: .black, labelFont: .boldSystemFont(ofSize: 15), showIn: .top, controller: self)
+                 return
+             }
+             self.memberSignInVC = Member(eMailData as! String)
+             self.performSegue(withIdentifier: "ToIndexScreen", sender: self)
+         }
+     }
+ }
+ */
